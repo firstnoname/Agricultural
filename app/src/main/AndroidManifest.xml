@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="se.is.agriculturalequipment">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:name=".app.AppController"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MenuEstimate" />
+        <activity android:name=".EstimateG200" />
+        <activity android:name=".MenuSetting" />
+        <activity android:name=".SettingPartsG200" />
+        <activity android:name=".addPart.AddPartG200" />
+        <activity android:name=".SettingPartGX160" />
+        <activity android:name=".addPart.AddPartGX160" />
+        <activity android:name=".SettingPartsGX35" />
+        <activity android:name=".addPart.AddPartGX35" />
+        <activity android:name=".SettingPartsT200" />
+        <activity android:name=".addPart.AddPartT200" />
+        <activity android:name=".SettingPartsTM31" />
+        <activity android:name=".addPart.AddPartTM31" />
+        <activity android:name=".EstimateGX160" />
+        <activity android:name=".EstimateGX35" />
+        <activity android:name=".EstimateT200" />
+        <activity android:name=".EstimateTM31" />
+        <activity android:name=".SubmitEstimateG200" />
+        <activity android:name=".SaveEstimated" />
+        <activity android:name=".BuyEstimated" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity android:name=".SubmitEstimateGX160" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".history.HistoryG200Lists" />
+        <activity android:name=".SingleItemG200" />
+        <activity android:name=".history.HistoryGX160List" />
+        <activity android:name=".BuyEstimatedGX160" />
+        <activity android:name=".SubmitEstimateGX35" />
+        <activity android:name=".BuyEstimatedGX35" />
+        <activity android:name=".BuyEstimatedT200" />
+        <activity android:name=".SubmitEstimateT200" />
+        <activity android:name=".SubmitEstimateTM31" />
+        <activity android:name=".BuyEstimatedTM31" />
+        <activity android:name=".history.HistoryGX35List" />
+        <activity android:name=".SingleItemGX35" />
+        <activity android:name=".history.HistoryT200List" />
+        <activity android:name=".history.HistoryTM31List" />
+        <activity android:name=".SingleItemTM31" />
+        <activity android:name=".EditPart" />
+        <activity android:name=".Admin.MainAdmin" />
+        <activity android:name=".Admin.OwnerPage" />
+        <activity android:name=".Admin.UpdateUser" />
+        <activity android:name=".Admin.AddUser" />
+        <activity android:name=".Admin.EmployeePage" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".GuideMainMenu" />
+        <activity android:name=".GuideG200" />
+        <activity android:name=".GuideGX160" />
+        <activity android:name=".GuideGX35" />
+        <activity android:name=".GuideT200" />
+        <activity android:name=".GuideTM31"></activity>
+    </application>
+
+</manifest>
