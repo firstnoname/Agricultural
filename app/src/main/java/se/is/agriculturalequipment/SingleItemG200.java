@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -37,6 +38,8 @@ public class SingleItemG200 extends AppCompatActivity {
         final G200 edtG200 = (G200) getIntent().getSerializableExtra("editG200");
         final String table_name = getIntent().getStringExtra("table_name");
         final String id_who_buy;
+
+        Toast.makeText(this, edtG200.getStarter() + " : " + edtG200.getFuelTank(), Toast.LENGTH_SHORT).show();
 
         TextView txtID = (TextView) findViewById(R.id.txtIdCustomer);
         TextView txtName = (TextView) findViewById(R.id.txtName);

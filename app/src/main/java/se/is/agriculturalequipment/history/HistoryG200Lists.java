@@ -76,7 +76,7 @@ public class HistoryG200Lists extends AppCompatActivity {
         JsonArrayRequest jsArr = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("response: ", response.toString());
+                //Log.d("response: ", response.toString());
                 for (int i = 0; i < response.length(); i++) {
                     JSONObject obj = null;
                     try {
@@ -86,6 +86,7 @@ public class HistoryG200Lists extends AppCompatActivity {
                         g200.setIdentification_no(obj.getString("identification_no"));
                         g200.setName(obj.getString("name"));
                         g200.setId_buy_g200(obj.getString("id_buy_g200"));
+                        g200.setEngineStatus("engine");
                         g200.setStarter(obj.getString("starter"));
                         g200.setFuelTank(obj.getString("fuelTank"));
                         g200.setAirFilter(obj.getString("airFilter"));

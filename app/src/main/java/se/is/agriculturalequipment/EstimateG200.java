@@ -341,8 +341,8 @@ public class EstimateG200 extends AppCompatActivity {
         intentSubmitEstimateG200.putExtra("idxEngine", idxSelectedEngine);
         intentSubmitEstimateG200.putStringArrayListExtra("arrListName",arrNameList);
         intentSubmitEstimateG200.putIntegerArrayListExtra("arrSelectedID", arrSelectedID);
-        Log.d("arrListName : ", arrNameList.toString());
-        Log.d("arrSelectID : ", arrSelectedID.toString());
+        /*Log.d("arrListName : ", arrNameList.toString());
+        Log.d("arrSelectID : ", arrSelectedID.toString());*/
         startActivity(intentSubmitEstimateG200);
 
     }

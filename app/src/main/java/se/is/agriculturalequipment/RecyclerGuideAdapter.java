@@ -31,7 +31,7 @@ class RecyclerGuideAdapter extends RecyclerView.Adapter<RecyclerGuideAdapter.Vie
     };
 
     private int[] guideImageG200L = {
-            0,
+//            0,
             R.drawable.g200_starter_change,
             R.drawable.g200_fueltank_change,
             R.drawable.g200_airfilter_change,
@@ -40,6 +40,7 @@ class RecyclerGuideAdapter extends RecyclerView.Adapter<RecyclerGuideAdapter.Vie
             R.drawable.g200_ballvalveswitchoil_change,
             R.drawable.g200_muffler_change,
             R.drawable.g200_switch_on_off_change,
+            0,
             R.drawable.g200_fueltankcap_change,
             R.drawable.g200_new_paint_change,
             R.drawable.g200_oil_filter_change,
@@ -47,7 +48,7 @@ class RecyclerGuideAdapter extends RecyclerView.Adapter<RecyclerGuideAdapter.Vie
     };
 
     private int[] guideImageG200R = {
-            0,
+//            0,
             R.drawable.g200_starter_not,
             R.drawable.g200_fueltank_not,
             R.drawable.g200_airfilter_not,
@@ -56,6 +57,7 @@ class RecyclerGuideAdapter extends RecyclerView.Adapter<RecyclerGuideAdapter.Vie
             R.drawable.g200_ballvalveswitchoil_not,
             R.drawable.g200_muffler_not,
             R.drawable.g200_switch_on_off_not,
+            0,
             R.drawable.g200_fueltankcap_not,
             R.drawable.g200_new_paint_not,
             R.drawable.g200_oil_filter_not,
