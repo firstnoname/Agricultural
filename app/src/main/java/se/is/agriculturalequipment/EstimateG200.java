@@ -74,7 +74,7 @@ public class EstimateG200 extends AppCompatActivity {
                 rdg2.setVisibility(View.VISIBLE);
                 rdg3.setVisibility(View.VISIBLE);
                 rdg4.setVisibility(View.VISIBLE);
-                rdg5.setVisibility(View.GONE);
+                rdg5.setVisibility(View.VISIBLE);
                 rdg6.setVisibility(View.VISIBLE);
                 rdg7.setVisibility(View.VISIBLE);
                 rdg8.setVisibility(View.VISIBLE);
@@ -223,11 +223,11 @@ public class EstimateG200 extends AppCompatActivity {
             arrSelectedID.add(idxSelectedCarburetor = rdg4.indexOfChild(rdbSelectedCarburetor));
             arrNameList.add(rdbSelectedCarburetor.getText().toString());
 
-            /*No5 = ท่อไอเสีย*/
-            /*idSelectedCylinderSet = rdg5.getCheckedRadioButtonId();
+            /*No5 = เสื้อสูบ*/
+            idSelectedCylinderSet = rdg5.getCheckedRadioButtonId();
             rdbSelectedCylinderSet = (RadioButton) findViewById(idSelectedCylinderSet);
             arrSelectedID.add(idxSelectedCylinderSet = rdg5.indexOfChild(rdbSelectedCylinderSet));
-            arrNameList.add(rdbSelectedCylinderSet.getText().toString());*/
+            arrNameList.add(rdbSelectedCylinderSet.getText().toString());
 
             /*No6 = ปลั๊กหัวเทียน*/
             idSelectedBallValveSwitchOil = rdg6.getCheckedRadioButtonId();
@@ -341,8 +341,8 @@ public class EstimateG200 extends AppCompatActivity {
         intentSubmitEstimateG200.putExtra("idxEngine", idxSelectedEngine);
         intentSubmitEstimateG200.putStringArrayListExtra("arrListName",arrNameList);
         intentSubmitEstimateG200.putIntegerArrayListExtra("arrSelectedID", arrSelectedID);
-        /*Log.d("arrListName : ", arrNameList.toString());
-        Log.d("arrSelectID : ", arrSelectedID.toString());*/
+        Log.d("arrListName : ", arrNameList.toString());
+        Log.d("arrSelectID : ", arrSelectedID.toString());
         startActivity(intentSubmitEstimateG200);
 
     }
