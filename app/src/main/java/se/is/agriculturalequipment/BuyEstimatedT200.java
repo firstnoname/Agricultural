@@ -26,7 +26,7 @@ public class BuyEstimatedT200 extends AppCompatActivity {
     private static final String JPEG_FILE_PREFIX = "IMG_";
     private static final String JPEG_FILE_SUFFIX = ".jpg";
     String idxEngine;
-    String dealingStatus = "Buy";
+    String dealingStatus = "";
     private String mCurrentPhotoPath;
     private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
     private ImageView mImageView;
@@ -66,7 +66,8 @@ public class BuyEstimatedT200 extends AppCompatActivity {
         strName = intent.getStringArrayExtra("partName");
         partName = Arrays.toString(strName);
 
-        Log.d("partName = ", partName);
+        //Log.d("partName = ", partName);
+        dealingStatus = intent.getStringExtra("dealStatus");
     }
 
     private void bindWidget() {

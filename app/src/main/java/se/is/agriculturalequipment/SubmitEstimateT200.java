@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class SubmitEstimateT200 extends AppCompatActivity {
 
     private int idxEngine;
+    private String idxEnginePass;
     private String priceStarter, priceFuelTank, priceControlSwitch, priceBrushCutterBlade, priceAirFilter,
             priceCarburetor, priceCylinderSet, priceBallValveSwitchOil, priceMuffler, priceGearDiver,
             priceMainPipe, priceSwitchOnOff, priceCoil, priceFuelTankCap, priceNewPaint, priceShaft,
@@ -422,19 +423,33 @@ public class SubmitEstimateT200 extends AppCompatActivity {
     }
 
     public void intentSaveT200(View view) {
+        if (idxEngine == 0) {
+            idxEnginePass = "0";
+        } else {
+            idxEnginePass = "1";
+        }
+
         Intent intentSaveT200 = new Intent((this), BuyEstimatedT200.class);
         intentSaveT200.putExtra("amount", dAmount.toString());
         intentSaveT200.putExtra("partName", strName);
         intentSaveT200.putExtra("partPrice", strPrice);
+        intentSaveT200.putExtra("dealStatus", "Save");
 
         startActivity(intentSaveT200);
     }
 
     public void intentBuyT200(View view) {
+        if (idxEngine == 0) {
+            idxEnginePass = "0";
+        } else {
+            idxEnginePass = "1";
+        }
+
         Intent intentBuyT200 = new Intent(this, BuyEstimatedT200.class);
         intentBuyT200.putExtra("amount", dAmount.toString());
         intentBuyT200.putExtra("partName", strName);
         intentBuyT200.putExtra("partPrice", strPrice);
+        intentBuyT200.putExtra("dealStatus", "Buy");
 
         startActivity(intentBuyT200);
     }

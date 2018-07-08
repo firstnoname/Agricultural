@@ -117,12 +117,12 @@ public class BackgroundTaskGX35 extends AsyncTask<String, Void, String> {
                             URLEncoder.encode("muffler", "UTF-8") + "=" + URLEncoder.encode(partName[7], "UTF-8") + "&" +
                             URLEncoder.encode("gearDiver", "UTF-8") + "=" + URLEncoder.encode(partName[8], "UTF-8") + "&" +
                             URLEncoder.encode("mainPipe", "UTF-8") + "=" + URLEncoder.encode(partName[9], "UTF-8") + "&" +
-                            URLEncoder.encode("switchOnOff", "UTF-8") + "=" + URLEncoder.encode(partName[10], "UTF-8") + "&" +
-                            URLEncoder.encode("fuelTankCap", "UTF-8") + "=" + URLEncoder.encode(partName[11], "UTF-8") + "&" +
-                            URLEncoder.encode("newPaint", "UTF-8") + "=" + URLEncoder.encode(partName[12], "UTF-8") + "&" +
-                            URLEncoder.encode("shaft", "UTF-8") + "=" + URLEncoder.encode(partName[13], "UTF-8") + "&" +
-                            URLEncoder.encode("oilTankCap", "UTF-8") + "=" + URLEncoder.encode(partName[14], "UTF-8") + "&" +
-                            URLEncoder.encode("sparkPlug", "UTF-8") + "=" + URLEncoder.encode(partName[15], "UTF-8") + "&" +
+//                            URLEncoder.encode("switchOnOff", "UTF-8") + "=" + URLEncoder.encode(partName[10], "UTF-8") + "&" +
+//                            URLEncoder.encode("fuelTankCap", "UTF-8") + "=" + URLEncoder.encode(partName[11], "UTF-8") + "&" +
+//                            URLEncoder.encode("newPaint", "UTF-8") + "=" + URLEncoder.encode(partName[12], "UTF-8") + "&" +
+                            URLEncoder.encode("shaft", "UTF-8") + "=" + URLEncoder.encode(partName[10], "UTF-8") + "&" +
+//                            URLEncoder.encode("oilTankCap", "UTF-8") + "=" + URLEncoder.encode(partName[14], "UTF-8") + "&" +
+                            URLEncoder.encode("sparkPlug", "UTF-8") + "=" + URLEncoder.encode(partName[11], "UTF-8") + "&" +
                             URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
                             URLEncoder.encode("dealingStatus", "UTF-8") + "=" + URLEncoder.encode(dealingStatus, "UTF-8");
                 }

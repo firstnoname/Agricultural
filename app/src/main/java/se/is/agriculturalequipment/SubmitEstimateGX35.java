@@ -430,6 +430,7 @@ public class SubmitEstimateGX35 extends AppCompatActivity {
         intentSaveGX35.putExtra("partName", strName);
         intentSaveGX35.putExtra("partPrice", strPrice);
         intentSaveGX35.putExtra("idxEngine", idxEnginePass);
+        intentSaveGX35.putExtra("dealStatus", "Save");
 
         startActivity(intentSaveGX35);
     }
@@ -446,6 +447,7 @@ public class SubmitEstimateGX35 extends AppCompatActivity {
         intentBuyGX35.putExtra("partName", strName);
         intentBuyGX35.putExtra("partPrice", strPrice);
         intentBuyGX35.putExtra("idxEngine", idxEnginePass);
+        intentBuyGX35.putExtra("dealStatus", "Buy");
 
        /* for (int x=0; x<strName.length; x++) {
             Log.d("GX35 submit", x + " / " + strName.length + " : " + strName[x]);

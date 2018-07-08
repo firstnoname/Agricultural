@@ -74,7 +74,7 @@ public class BackgroundTaskTM31 extends AsyncTask<String, Void, String> {
 
                 String data = null;
                 //Check engine work?
-                if (idxEngine == "0") {
+                if (idxEngine.equals("0")) {
                     data = URLEncoder.encode("idNo", "UTF-8") + "=" + URLEncoder.encode(idNo, "UTF-8") + "&" +
                             URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&" +
                             URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +

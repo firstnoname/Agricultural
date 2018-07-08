@@ -336,11 +336,24 @@ public class SubmitEstimateTM31 extends AppCompatActivity {
         listViewEstimatedTM31 = (ListView) findViewById(R.id.listViewEstimatedTM31);
     }
 
+    public void intentSaveTM31(View view) {
+        Intent intentSaveTM31 = new Intent(this, BuyEstimatedTM31.class);
+        intentSaveTM31.putExtra("amount", dAmount.toString());
+        intentSaveTM31.putExtra("partName", strName);
+        intentSaveTM31.putExtra("partPrice", strPrice);
+        intentSaveTM31.putExtra("dealStatus", "Save");
+        intentSaveTM31.putExtra("idxEngine", "0");
+
+        startActivity(intentSaveTM31);
+    }
+
     public void intentBuyTM31(View view) {
         Intent intentBuyTM31 = new Intent(this, BuyEstimatedTM31.class);
         intentBuyTM31.putExtra("amount", dAmount.toString());
         intentBuyTM31.putExtra("partName", strName);
         intentBuyTM31.putExtra("partPrice", strPrice);
+        intentBuyTM31.putExtra("dealStatus", "Buy");
+        intentBuyTM31.putExtra("idxEngine", "0");
 
         startActivity(intentBuyTM31);
     }

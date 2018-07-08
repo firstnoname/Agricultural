@@ -338,6 +338,23 @@ public class SubmitEstimateGX160 extends AppCompatActivity {
         listViewEstimatedGX160 = (ListView) findViewById(R.id.listViewEstimatedGX160);
     }
 
+    public void intentSaveGX160(View view) {
+        if (idxEngine == 0) {
+            idxEnginePass = "0";
+        } else {
+            idxEnginePass = "1";
+        }
+
+        Intent intentSaveGX160 = new Intent(this, BuyEstimatedGX160.class);
+        intentSaveGX160.putExtra("amount", dAmount.toString());
+        intentSaveGX160.putExtra("partName", strName);
+        intentSaveGX160.putExtra("partPrice", strPrice);
+        intentSaveGX160.putExtra("idxEngine", idxEnginePass);
+        intentSaveGX160.putExtra("dealStatus", "Save");
+
+        startActivity(intentSaveGX160);
+    }
+
     public void intentBuyGX160(View view) {
         if (idxEngine == 0) {
             idxEnginePass = "0";
@@ -350,6 +367,7 @@ public class SubmitEstimateGX160 extends AppCompatActivity {
         intentBuyGX160.putExtra("partName", strName);
         intentBuyGX160.putExtra("partPrice", strPrice);
         intentBuyGX160.putExtra("idxEngine", idxEnginePass);
+        intentBuyGX160.putExtra("dealStatus", "Buy");
 
         startActivity(intentBuyGX160);
     }
