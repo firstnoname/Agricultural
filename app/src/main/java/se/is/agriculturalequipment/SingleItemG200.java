@@ -39,7 +39,7 @@ public class SingleItemG200 extends AppCompatActivity {
         final String table_name = getIntent().getStringExtra("table_name");
         final String id_who_buy;
 
-        Toast.makeText(this, edtG200.getStarter() + " : " + edtG200.getFuelTank(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, edtG200.getStarter() + " : " + edtG200.getFuelTank(), Toast.LENGTH_SHORT).show();
 
         TextView txtID = (TextView) findViewById(R.id.txtIdCustomer);
         TextView txtName = (TextView) findViewById(R.id.txtName);
@@ -83,7 +83,7 @@ public class SingleItemG200 extends AppCompatActivity {
         txtBuyDate.setText(edtG200.getBuyDate());
         txtAmount.setText(edtG200.getAmount());
         id_who_buy = edtG200.getId_buy_g200();
-
+        //Log.d("single item g200 : ", edtG200.getEngineStatus() + " : " + edtG200.getStarter());
         //Change status from Save to Buy.
 
         if(edtG200.getDealStatus().contains("Buy")){

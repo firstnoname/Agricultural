@@ -3,6 +3,7 @@ package se.is.agriculturalequipment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -445,6 +446,10 @@ public class SubmitEstimateGX35 extends AppCompatActivity {
         intentBuyGX35.putExtra("partName", strName);
         intentBuyGX35.putExtra("partPrice", strPrice);
         intentBuyGX35.putExtra("idxEngine", idxEnginePass);
+
+       /* for (int x=0; x<strName.length; x++) {
+            Log.d("GX35 submit", x + " / " + strName.length + " : " + strName[x]);
+        }*/
 
         startActivity(intentBuyGX35);
     }

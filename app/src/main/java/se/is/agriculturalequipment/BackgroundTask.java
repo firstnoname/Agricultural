@@ -36,6 +36,8 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
 
     protected String doInBackground(String... params) {
 
+
+
 //        String insert_profile_url = "http://10.0.2.2/AgriculturalEquipmentServer/insert_profile.php";
         String insert_profile_url = "http://tomori.siameki.com/insert_profile.php";
 
@@ -51,6 +53,10 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             String idxEngine = params[7];
             String dealingStatus = params[8];
 
+            /*for (int i = 0; i < partName.length; i++) {
+                Log.d("partName BackgroundTask" + i + " : ", partName[i]);
+            }*/
+
             //Convert String[] to String.
             try {
                 JSONArray temp = new JSONArray(strName);
@@ -59,12 +65,12 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 e.printStackTrace();
             }
 
-            Log.d("partName : ", strName);
+            //Log.d("partName : ", strName);
 
 //            Test debug values of partName.
-            for (int i = 0; i < partName.length; i++) {
-                Log.d("partName " + i + " : ", partName[i]);
-            }
+            /*for (int i = 0; i < partName.length; i++) {
+                Log.d("partName BackgroundTask" + i + " : ", partName[i] + " : Engine : " + idxEngine);
+            }*/
 
             try {
                 URL url = new URL(insert_profile_url);
@@ -76,8 +82,10 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
 
                 String data = null;
+                String checkEngine = null;
                 //Check engine work?
-                if (idxEngine == "0") {
+                if (idxEngine.equals("0")) {
+                    checkEngine = "Start : " + idxEngine;
                     data = URLEncoder.encode("idNo", "UTF-8") + "=" + URLEncoder.encode(idNo, "UTF-8") + "&" +
                             URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&" +
                             URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
@@ -100,7 +108,30 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                             URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
                             URLEncoder.encode("dealingStatus", "UTF-8") + "=" + URLEncoder.encode(dealingStatus, "UTF-8");
 
+                    /*data = URLEncoder.encode("idNo", "UTF-8") + "=" + URLEncoder.encode(idNo, "UTF-8") + "&" +
+                            URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&" +
+                            URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
+                            URLEncoder.encode("image_name", "UTF-8") + "=" + URLEncoder.encode(imageName, "UTF-8") + "&" +
+                            URLEncoder.encode("encoded_image", "UTF-8") + "=" + URLEncoder.encode("Encode", "UTF-8") + "&" +
+                            URLEncoder.encode("engineStatus", "UTF-8") + "=" + URLEncoder.encode("Engine", "UTF-8") + "&" +
+                            URLEncoder.encode("starter", "UTF-8") + "=" + URLEncoder.encode("Starter", "UTF-8") + "&" +
+                            URLEncoder.encode("fuelTank", "UTF-8") + "=" + URLEncoder.encode("Fuel Tank", "UTF-8") + "&" +
+                            URLEncoder.encode("airFilter", "UTF-8") + "=" + URLEncoder.encode("Air Filter", "UTF-8") + "&" +
+                            URLEncoder.encode("carburetor", "UTF-8") + "=" + URLEncoder.encode("Carburetor", "UTF-8") + "&" +
+                            URLEncoder.encode("cylinderSet", "UTF-8") + "=" + URLEncoder.encode("Cylinder", "UTF-8") + "&" +
+                            URLEncoder.encode("ballValveSwitchOil", "UTF-8") + "=" + URLEncoder.encode("Ball Valve", "UTF-8") + "&" +
+                            URLEncoder.encode("muffler", "UTF-8") + "=" + URLEncoder.encode("Muffler", "UTF-8") + "&" +
+                            URLEncoder.encode("switchOnOff", "UTF-8") + "=" + URLEncoder.encode("Switch", "UTF-8") + "&" +
+                            URLEncoder.encode("coil", "UTF-8") + "=" + URLEncoder.encode("Coil", "UTF-8") + "&" +
+                            URLEncoder.encode("fuelTankCap", "UTF-8") + "=" + URLEncoder.encode("Fuel Tank Cap", "UTF-8") + "&" +
+                            URLEncoder.encode("newPaint", "UTF-8") + "=" + URLEncoder.encode("New Paint", "UTF-8") + "&" +
+                            URLEncoder.encode("oilTankCap", "UTF-8") + "=" + URLEncoder.encode("Oil Tank Cap", "UTF-8") + "&" +
+                            URLEncoder.encode("sparkPlug", "UTF-8") + "=" + URLEncoder.encode("Spark Plug", "UTF-8") + "&" +
+                            URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
+                            URLEncoder.encode("dealingStatus", "UTF-8") + "=" + URLEncoder.encode(dealingStatus, "UTF-8");*/
+
                 } else {
+                    checkEngine = "Can't start : " + idxEngine;
                     data = URLEncoder.encode("idNo", "UTF-8") + "=" + URLEncoder.encode(idNo, "UTF-8") + "&" +
                             URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&" +
                             URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
@@ -119,20 +150,39 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                             URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
                             URLEncoder.encode("dealingStatus", "UTF-8") + "=" + URLEncoder.encode(dealingStatus, "UTF-8");
 
+                    /*data = URLEncoder.encode("idNo", "UTF-8") + "=" + URLEncoder.encode(idNo, "UTF-8") + "&" +
+                            URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&" +
+                            URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
+                            URLEncoder.encode("image_name", "UTF-8") + "=" + URLEncoder.encode(imageName, "UTF-8") + "&" +
+                            URLEncoder.encode("encoded_image", "UTF-8") + "=" + URLEncoder.encode("ImageEncoded", "UTF-8") + "&" +
+                            URLEncoder.encode("engineStatus", "UTF-8") + "=" + URLEncoder.encode("Can't start", "UTF-8") + "&" +
+                            URLEncoder.encode("fuelTank", "UTF-8") + "=" + URLEncoder.encode(partName[1], "UTF-8") + "&" +
+                            URLEncoder.encode("airFilter", "UTF-8") + "=" + URLEncoder.encode(partName[2], "UTF-8") + "&" +
+                            URLEncoder.encode("cylinderSet", "UTF-8") + "=" + URLEncoder.encode(partName[3], "UTF-8") + "&" +
+                            URLEncoder.encode("muffler", "UTF-8") + "=" + URLEncoder.encode(partName[4], "UTF-8") + "&" +
+                            URLEncoder.encode("switchOnOff", "UTF-8") + "=" + URLEncoder.encode(partName[5], "UTF-8") + "&" +
+                            URLEncoder.encode("fuelTankCap", "UTF-8") + "=" + URLEncoder.encode(partName[6], "UTF-8") + "&" +
+                            URLEncoder.encode("newPaint", "UTF-8") + "=" + URLEncoder.encode(partName[7], "UTF-8") + "&" +
+                            URLEncoder.encode("oilTankCap", "UTF-8") + "=" + URLEncoder.encode(partName[8], "UTF-8") + "&" +
+                            URLEncoder.encode("sparkPlug", "UTF-8") + "=" + URLEncoder.encode(partName[9], "UTF-8") + "&" +
+                            URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
+                            URLEncoder.encode("dealingStatus", "UTF-8") + "=" + URLEncoder.encode(dealingStatus, "UTF-8");*/
+
                 }
 
-                /*String data = URLEncoder.encode("idNo","UTF-8") + "=" + URLEncoder.encode(idNo,"UTF-8")+"&"+
+               /* String data = URLEncoder.encode("idNo","UTF-8") + "=" + URLEncoder.encode(idNo,"UTF-8")+"&"+
                         URLEncoder.encode("name","UTF-8") + "=" + URLEncoder.encode(name,"UTF-8")+"&"+
                         URLEncoder.encode("encoded_image","UTF-8") + "=" + URLEncoder.encode("SGVsbG9=","UTF-8")+"&"+
                         URLEncoder.encode("image_name","UTF-8") + "=" + URLEncoder.encode(imageName,"UTF-8")+"&";*/
 
+
+                Log.d("Check engine", checkEngine);
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 os.close();
                 InputStream is = httpURLConnection.getInputStream();
                 is.close();
-
                 return "Insert values G200 success.";
             } catch (MalformedURLException e) {
                 e.printStackTrace();

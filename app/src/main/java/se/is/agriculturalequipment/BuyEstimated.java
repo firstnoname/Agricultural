@@ -67,6 +67,7 @@ public class BuyEstimated extends AppCompatActivity {
         strName = intent.getStringArrayExtra("partName");
         partName = Arrays.toString(strName);
 
+        //Log.d("buy : ", partName);
         /*Toast.makeText(this, "strName : " + strName.toString(), Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "partName : " + partName, Toast.LENGTH_SHORT).show();*/
         dealingStatus = intent.getStringExtra("dealStatus");
@@ -220,7 +221,14 @@ public class BuyEstimated extends AppCompatActivity {
         String method = "insert_profile";
         BackgroundTask backgroundTask = new BackgroundTask(this);
         backgroundTask.execute(method, idNo, name, amount, imageName, encodeImage, partName, idxEngine, dealingStatus);
-        finish();
+
+        callIntentMainMenu();
+    }
+
+    private void callIntentMainMenu() {
+        Intent intentMainMenu = new Intent(BuyEstimated.this,MainActivity.class);
+        startActivity(intentMainMenu);
+
     }
 
     private void imageEncodeToBase64() {

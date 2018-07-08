@@ -72,6 +72,7 @@ public class HistoryGX35List extends AppCompatActivity {
                         gx35.setId_customer(obj.getString("id_customer"));
                         gx35.setIdentification_no(obj.getString("identification_no"));
                         gx35.setName(obj.getString("name"));
+                        gx35.setEngineStatus(obj.getString("engineStatus"));
                         gx35.setStarter(obj.getString("starter"));
                         gx35.setFuelTank(obj.getString("fuelTank"));
                         gx35.setControlSwitch(obj.getString("controlSwitch"));

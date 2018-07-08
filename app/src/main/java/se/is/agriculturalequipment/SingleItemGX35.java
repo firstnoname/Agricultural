@@ -31,7 +31,7 @@ public class SingleItemGX35 extends AppCompatActivity {
         TextView txtBrushCutterBlade = (TextView) findViewById(R.id.txtBrushCutterBlade);
         TextView txtFuelTank = (TextView) findViewById(R.id.txtFuelTank);
         TextView txtAirFilter = (TextView) findViewById(R.id.txtAirFilter);
-//        TextView txtCarburetor = (TextView) findViewById(R.id.txtCarburetor);
+        TextView txtCarburetor = (TextView) findViewById(R.id.txtCarburetor);
         TextView txtCylinderSet = (TextView) findViewById(R.id.txtCylinderSet);
         TextView txtBallValveSwitchOil = (TextView) findViewById(R.id.txtBallValveSwitchOil);
         TextView txtMuffler = (TextView) findViewById(R.id.txtMuffler);
@@ -50,6 +50,7 @@ public class SingleItemGX35 extends AppCompatActivity {
 
         btnChangeStatus = (Button) findViewById(R.id.btnChangeStatus);
 
+//        Toast.makeText(this, edtGx35.getEngineStatus(), Toast.LENGTH_SHORT).show();
         txtID.setText(edtGx35.getIdentification_no());
         txtName.setText(edtGx35.getName());
         txtEngine.setText(edtGx35.getEngineStatus());
@@ -58,7 +59,7 @@ public class SingleItemGX35 extends AppCompatActivity {
         txtBrushCutterBlade.setText(edtGx35.getBrushCutterBlade());
         txtFuelTank.setText(edtGx35.getFuelTank());
         txtAirFilter.setText(edtGx35.getAirFilter());
-//        txtCarburetor.setText(edtGx35.getCarburetor());
+        txtCarburetor.setText(edtGx35.getCarburetor());
         txtCylinderSet.setText(edtGx35.getCylinderSet());
         txtBallValveSwitchOil.setText(edtGx35.getBallValveSwitchOil());
         txtMuffler.setText(edtGx35.getMuffler());
