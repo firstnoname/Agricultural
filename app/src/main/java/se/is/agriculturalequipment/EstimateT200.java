@@ -63,9 +63,14 @@ public class EstimateT200 extends AppCompatActivity {
 
         hideRadioGroup();
 
+        onClickListener();
+
+    }
+
+    private void onClickListener() {
         rdbEngineTrue.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 rdbEngineFalse.setChecked(false);
                 rdg1.setVisibility(View.VISIBLE);
                 rdg2.setVisibility(View.VISIBLE);
@@ -86,16 +91,16 @@ public class EstimateT200 extends AppCompatActivity {
                 rdg17.setVisibility(View.VISIBLE);
                 rdg18.setVisibility(View.VISIBLE);
 
-
                 layoutButtonGroup.setVisibility(View.VISIBLE);
-
+                idxSelectedEngine = 0;
                 setDefaultSelect(0);
+
             }
         });
 
         rdbEngineFalse.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 rdbEngineTrue.setChecked(false);
                 rdg1.setVisibility(View.VISIBLE);
                 rdg2.setVisibility(View.VISIBLE);
@@ -113,15 +118,17 @@ public class EstimateT200 extends AppCompatActivity {
                 rdg14.setVisibility(View.GONE);
                 rdg15.setVisibility(View.GONE);
                 rdg16.setVisibility(View.GONE);
-                rdg17.setVisibility(View.GONE);
+                rdg17.setVisibility(View.VISIBLE);
                 rdg18.setVisibility(View.VISIBLE);
 
                 layoutButtonGroup.setVisibility(View.VISIBLE);
-
+                idxSelectedEngine = 1;
                 setDefaultSelect(1);
+
             }
         });
     }
+
 
     private void bindWidget() {
         rdgCheckEngine = (RadioGroup) findViewById(R.id.checkEngine);
@@ -215,6 +222,47 @@ public class EstimateT200 extends AppCompatActivity {
         layoutButtonGroup.setVisibility(View.GONE);
     }
 
+    private void setDefaultSelect(int i) {
+        if (i == 0) {
+            //Can start.
+            rdb1_1.setChecked(true);
+            rdb2_1.setChecked(true);
+            rdb3_1.setChecked(true);
+            rdb4_1.setChecked(true);
+            rdb5_1.setChecked(true);
+            rdb6_1.setChecked(true);
+            rdb7_1.setChecked(true);
+            rdb8_1.setChecked(true);
+            rdb9_1.setChecked(true);
+            rdb10_1.setChecked(true);
+            rdb11_1.setChecked(true);
+            rdb12_1.setChecked(true);
+            rdb13_1.setChecked(true);
+            rdb14_1.setChecked(true);
+            rdb15_1.setChecked(true);
+            rdb16_1.setChecked(true);
+            rdb17_1.setChecked(true);
+            rdb18_1.setChecked(true);
+        } else {
+            rdb1_1.setChecked(true);
+            rdb2_1.setChecked(true);
+            rdb3_1.setChecked(true);
+            rdb4_1.setChecked(true);
+            rdb5_1.setChecked(true);
+            rdb8_1.setChecked(true);
+            rdb9_1.setChecked(true);
+            rdb10_1.setChecked(true);
+            rdb11_1.setChecked(true);
+            rdb12_1.setChecked(true);
+            rdb14_1.setChecked(true);
+            //rdb15_1.setChecked(true);
+            rdb16_1.setChecked(true);
+            rdb17_1.setChecked(true);
+            rdb18_1.setChecked(true);
+
+        }
+    }
+
     public void intentSubmitEstimateT200(View view) {
 
         ArrayList<String> arrNameList = new ArrayList<String>();
@@ -240,13 +288,13 @@ public class EstimateT200 extends AppCompatActivity {
             arrSelectedID.add(idxSelectedFuelTank = rdg2.indexOfChild(rdbSelectedFuelTank));
             arrNameList.add(rdbSelectedFuelTank.getText().toString());
 
-             /*No3 = มือเร่ง */
+            /*No3 = มือเร่ง */
             idSelectedControlSwitch = rdg3.getCheckedRadioButtonId();
             rdbSelectedControlSwitch = (RadioButton) findViewById(idSelectedControlSwitch);
             arrSelectedID.add(idxSelectedControlSwitch = rdg3.indexOfChild(rdbSelectedControlSwitch));
             arrNameList.add(rdbSelectedControlSwitch.getText().toString());
 
-             /*No4 = ใบมีด*/
+            /*No4 = ใบมีด*/
             idSelectedBrushCutterBlade = rdg4.getCheckedRadioButtonId();
             rdbSelectedBrushCutterBlade = (RadioButton) findViewById(idSelectedBrushCutterBlade);
             arrSelectedID.add(idxSelectedBrushCutterBlade = rdg4.indexOfChild(rdbSelectedBrushCutterBlade));
@@ -307,7 +355,7 @@ public class EstimateT200 extends AppCompatActivity {
             arrSelectedID.add(idxSelectedCoil = rdg13.indexOfChild(rdbSelectedCoil));
             arrNameList.add(rdbSelectedCoil.getText().toString());
 
-            /*No14 = ฝาถังน้ำมัน */
+            /*No14 = ฝาถังน้ำมัน */
             /*idSelectedFuelTankCap = rdg14.getCheckedRadioButtonId();
             rdbSelectedFuelTankCap = (RadioButton) findViewById(idSelectedFuelTankCap);
             arrSelectedID.add(idxSelectedFuelTankCap = rdg14.indexOfChild(rdbSelectedFuelTankCap));
@@ -319,7 +367,7 @@ public class EstimateT200 extends AppCompatActivity {
             arrSelectedID.add(idxSelectedNewPaint = rdg15.indexOfChild(rdbSelectedNewPaint));
             arrNameList.add(rdbSelectedNewPaint.getText().toString());*/
 
-             /*No16 = แกนเพลา */
+            /*No16 = แกนเพลา */
             idSelectedShaft = rdg16.getCheckedRadioButtonId();
             rdbSelectedShaft = (RadioButton) findViewById(idSelectedShaft);
             arrSelectedID.add(idxSelectedShaft = rdg16.indexOfChild(rdbSelectedShaft));
@@ -351,13 +399,13 @@ public class EstimateT200 extends AppCompatActivity {
             arrSelectedID.add(idxSelectedFuelTank = rdg2.indexOfChild(rdbSelectedFuelTank));
             arrNameList.add(rdbSelectedFuelTank.getText().toString());
 
-             /*No3 = มือเร่ง */
+            /*No3 = มือเร่ง */
             idSelectedControlSwitch = rdg3.getCheckedRadioButtonId();
             rdbSelectedControlSwitch = (RadioButton) findViewById(idSelectedControlSwitch);
             arrSelectedID.add(idxSelectedControlSwitch = rdg3.indexOfChild(rdbSelectedControlSwitch));
             arrNameList.add(rdbSelectedControlSwitch.getText().toString());
 
-             /*No4 = ใบมีด*/
+            /*No4 = ใบมีด*/
             idSelectedBrushCutterBlade = rdg4.getCheckedRadioButtonId();
             rdbSelectedBrushCutterBlade = (RadioButton) findViewById(idSelectedBrushCutterBlade);
             arrSelectedID.add(idxSelectedBrushCutterBlade = rdg4.indexOfChild(rdbSelectedBrushCutterBlade));
@@ -370,7 +418,7 @@ public class EstimateT200 extends AppCompatActivity {
             arrSelectedID.add(idxSelectedAirFilter = rdg5.indexOfChild(rdbSelectedAirFilter));
             arrNameList.add(rdbSelectedAirFilter.getText().toString());
 
-             /*No8 = ก๊อกน้ำมัน*/
+            /*No8 = ก๊อกน้ำมัน*/
             idSelectedBallValveSwitchOil = rdg8.getCheckedRadioButtonId();
             rdbSelectedBallValveSwitchOil = (RadioButton) findViewById(idSelectedBallValveSwitchOil);
             arrSelectedID.add(idxSelectedBallValveSwitchOil = rdg8.indexOfChild(rdbSelectedBallValveSwitchOil));
@@ -400,7 +448,7 @@ public class EstimateT200 extends AppCompatActivity {
             arrSelectedID.add(idxSelectedSwitchOnOff = rdg12.indexOfChild(rdbSelectedSwitchOnOff));
             arrNameList.add(rdbSelectedSwitchOnOff.getText().toString());*/
 
-            /*No14 = ฝาถังน้ำมัน */
+            /*No14 = ฝาถังน้ำมัน */
             /*idSelectedFuelTankCap = rdg14.getCheckedRadioButtonId();
             rdbSelectedFuelTankCap = (RadioButton) findViewById(idSelectedFuelTankCap);
             arrSelectedID.add(idxSelectedFuelTankCap = rdg14.indexOfChild(rdbSelectedFuelTankCap));
@@ -412,17 +460,17 @@ public class EstimateT200 extends AppCompatActivity {
             arrSelectedID.add(idxSelectedNewPaint = rdg15.indexOfChild(rdbSelectedNewPaint));
             arrNameList.add(rdbSelectedNewPaint.getText().toString());*/
 
-             /*No16 = แกนเพลา */
+            /*No16 = แกนเพลา */
             idSelectedShaft = rdg16.getCheckedRadioButtonId();
             rdbSelectedShaft = (RadioButton) findViewById(idSelectedShaft);
             arrSelectedID.add(idxSelectedShaft = rdg16.indexOfChild(rdbSelectedShaft));
             arrNameList.add(rdbSelectedShaft.getText().toString());
 
             /*No17 = ฝาถังน้ำมันเครื่อง */
-            /*idSelectedOilTankCap = rdg17.getCheckedRadioButtonId();
+            idSelectedOilTankCap = rdg17.getCheckedRadioButtonId();
             rdbSelectedOilTankCap = (RadioButton) findViewById(idSelectedOilTankCap);
             arrSelectedID.add(idxSelectedOilTankCap = rdg17.indexOfChild(rdbSelectedOilTankCap));
-            arrNameList.add(rdbSelectedOilTankCap.getText().toString());*/
+            arrNameList.add(rdbSelectedOilTankCap.getText().toString());
 
             /*No18 = ปลั้คหัวเทียน*/
             idSelectedSparkPlug = rdg18.getCheckedRadioButtonId();
@@ -439,48 +487,6 @@ public class EstimateT200 extends AppCompatActivity {
         Log.d("arrListName : ", arrNameList.toString());
         Log.d("arrSelectID : ", arrSelectedID.toString());
         startActivity(intentSubmitEstimateT200);
-
-    }
-
-    private void setDefaultSelect(Integer check) {
-        if (check == 0) {
-            //Can start.
-            rdb1_1.setChecked(true);
-            rdb2_1.setChecked(true);
-            rdb3_1.setChecked(true);
-            rdb4_1.setChecked(true);
-            rdb5_1.setChecked(true);
-            rdb6_1.setChecked(true);
-            rdb7_1.setChecked(true);
-            rdb8_1.setChecked(true);
-            rdb9_1.setChecked(true);
-            rdb10_1.setChecked(true);
-            rdb11_1.setChecked(true);
-            rdb12_1.setChecked(true);
-            rdb13_1.setChecked(true);
-            rdb14_1.setChecked(true);
-            rdb15_1.setChecked(true);
-            rdb16_1.setChecked(true);
-            rdb17_1.setChecked(true);
-            rdb18_1.setChecked(true);
-        } else {
-            //Can't start.
-            rdb1_1.setChecked(true);
-            rdb2_1.setChecked(true);
-            rdb3_1.setChecked(true);
-            rdb4_1.setChecked(true);
-            rdb5_1.setChecked(true);
-            rdb8_1.setChecked(true);
-            rdb9_1.setChecked(true);
-            rdb10_1.setChecked(true);
-            rdb11_1.setChecked(true);
-            rdb12_1.setChecked(true);
-            rdb14_1.setChecked(true);
-            //rdb15_1.setChecked(true);
-            rdb16_1.setChecked(true);
-            //rdb17_1.setChecked(true);
-            rdb18_1.setChecked(true);
-        }
 
     }
 

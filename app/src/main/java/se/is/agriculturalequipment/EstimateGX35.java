@@ -117,8 +117,8 @@ public class EstimateGX35 extends AppCompatActivity {
                 rdg13.setVisibility(View.GONE);
                 rdg14.setVisibility(View.GONE);
                 rdg15.setVisibility(View.GONE);
-                rdg16.setVisibility(View.VISIBLE);
-                rdg17.setVisibility(View.GONE);
+                rdg16.setVisibility(View.GONE);
+                rdg17.setVisibility(View.VISIBLE);
                 rdg18.setVisibility(View.VISIBLE);
 
                 layoutButtonGroup.setVisibility(View.VISIBLE);
@@ -164,7 +164,7 @@ public class EstimateGX35 extends AppCompatActivity {
             rdb14_1.setChecked(true);
             //rdb15_1.setChecked(true);
             rdb16_1.setChecked(true);
-            //rdb17_1.setChecked(true);
+            rdb17_1.setChecked(true);
             rdb18_1.setChecked(true);
 
         }
@@ -462,10 +462,10 @@ public class EstimateGX35 extends AppCompatActivity {
             arrNameList.add(rdbSelectedShaft.getText().toString());
 
              /*No17 = ฝาถังน้ำมันเครื่อง */
-            /*idSelectedOilTankCap = rdg17.getCheckedRadioButtonId();
+            idSelectedOilTankCap = rdg17.getCheckedRadioButtonId();
             rdbSelectedOilTankCap = (RadioButton) findViewById(idSelectedOilTankCap);
             arrSelectedID.add(idxSelectedOilTankCap = rdg17.indexOfChild(rdbSelectedOilTankCap));
-            arrNameList.add(rdbSelectedOilTankCap.getText().toString());*/
+            arrNameList.add(rdbSelectedOilTankCap.getText().toString());
 
              /*No18 = ปลั๊กหัวเทียน*/
             idSelectedSparkPlug = rdg18.getCheckedRadioButtonId();

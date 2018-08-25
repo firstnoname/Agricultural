@@ -4,8 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import se.is.agriculturalequipment.DAO.ChangeStatusDAOServer;
 import se.is.agriculturalequipment.model.GX35;
@@ -39,18 +42,18 @@ public class SingleItemGX35 extends AppCompatActivity {
         TextView txtMainPipe = (TextView) findViewById(R.id.txtMainPipe);
         TextView txtSwitchOnOff = (TextView) findViewById(R.id.txtSwitchOnOff);
         TextView txtCoil = (TextView) findViewById(R.id.txtCoil);
-//        TextView txtFuelTankCap = (TextView) findViewById(R.id.txtFuelTankCap);
-//        TextView txtNewPaint = (TextView) findViewById(R.id.txtNewPaint);
+        TextView txtFuelTankCap = (TextView) findViewById(R.id.txtFuelTankCap);
+        TextView txtNewPaint = (TextView) findViewById(R.id.txtNewPaint);
         TextView txtShaft = (TextView) findViewById(R.id.txtShaft);
         TextView txtOilTankCap = (TextView) findViewById(R.id.txtOilTankCap);
         TextView txtSparkPlug = (TextView) findViewById(R.id.txtSparkPlug);
         TextView txtDealStatus = (TextView) findViewById(R.id.txtDealStatus);
         TextView txtBuyDate = (TextView) findViewById(R.id.txtBuyDate);
         TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+        ImageView imageView5 = (ImageView) findViewById(R.id.imageView5);
 
         btnChangeStatus = (Button) findViewById(R.id.btnChangeStatus);
 
-//        Toast.makeText(this, edtGx35.getEngineStatus(), Toast.LENGTH_SHORT).show();
         txtID.setText(edtGx35.getIdentification_no());
         txtName.setText(edtGx35.getName());
         txtEngine.setText(edtGx35.getEngineStatus());
@@ -67,8 +70,8 @@ public class SingleItemGX35 extends AppCompatActivity {
         txtMainPipe.setText(edtGx35.getMainPipe());
         txtSwitchOnOff.setText(edtGx35.getSwitchOnOff());
         txtCoil.setText(edtGx35.getCoil());
-//        txtFuelTankCap.setText(edtGx35.getFuelTankCap());
-//        txtNewPaint.setText(edtGx35.getNewPaint());
+        txtFuelTankCap.setText(edtGx35.getFuelTankCap());
+        txtNewPaint.setText(edtGx35.getNewPaint());
         txtShaft.setText(edtGx35.getShaft());
         txtOilTankCap.setText(edtGx35.getOilTankCap());
         txtSparkPlug.setText(edtGx35.getSparkPlug());
@@ -76,6 +79,10 @@ public class SingleItemGX35 extends AppCompatActivity {
         txtBuyDate.setText(edtGx35.getBuyDate());
         txtAmount.setText(edtGx35.getAmount());
         id_who_buy = edtGx35.getId_buy_gx35();
+
+        System.out.println("image name = "+ edtGx35.getImage_name());
+
+        Picasso.with(imageView5.getContext()).load("http://tomori.siameki.com/images/"+edtGx35.getImage_name()).rotate(90).into(imageView5);
 
 
         //Check if deal status are Buy.

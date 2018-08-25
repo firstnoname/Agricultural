@@ -209,6 +209,8 @@ public class EstimateTM31 extends AppCompatActivity {
 //        Check can start or not. 0 = The engine can starts, 1 = The engine can't starts.
         if (idxSelectedEngine == 0) {
 
+            arrNameList.add("ราคาต้น");
+
             /*No1 = หม้อลม*/
             idSelectedAirChamber = rdg1.getCheckedRadioButtonId();
             rdbSelectedAirChamber = (RadioButton) findViewById(idSelectedAirChamber);

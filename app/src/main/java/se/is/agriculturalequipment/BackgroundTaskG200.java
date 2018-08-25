@@ -19,24 +19,28 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Created by BlackClover on 10/30/2017.
+ * Created by iFirst on 19/4/2560.
  */
 
-public class BackgroundTaskGX160 extends AsyncTask<String, Void, String> {
+public class BackgroundTaskG200 extends AsyncTask<String, Void, String> {
 
     Context ctx;
 
-    BackgroundTaskGX160(Context ctx) {
+    BackgroundTaskG200(Context ctx) {
         this.ctx = ctx;
     }
 
-    @Override
+    public BackgroundTaskG200() {
+        super();
+    }
+
     protected String doInBackground(String... params) {
-        //        String insert_profile_url = "http://10.0.2.2/AgriculturalEquipmentServer/insert_profile.php";
-        String insert_profile_url = "http://tomori.siameki.com/insert_profile_gx160.php";
+
+//        String insert_profile_url = "http://10.0.2.2/AgriculturalEquipmentServer/insert_profile.php";
+        String insert_profile_url = "http://tomori.siameki.com/insert_profile.php";
 
         String method = params[0];
-        if (method.equals("insert_profile_gx160")) {
+        if (method.equals("insert_profile")) {
             String idNo = params[1];
             String name = params[2];
             String amount = params[3];
@@ -62,6 +66,7 @@ public class BackgroundTaskGX160 extends AsyncTask<String, Void, String> {
                 Log.d("partName " + i + " : ", partName[i]);
             }
 
+            System.out.println("part name = "+ partName);
             try {
                 URL url = new URL(insert_profile_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -79,7 +84,7 @@ public class BackgroundTaskGX160 extends AsyncTask<String, Void, String> {
                             URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
                             URLEncoder.encode("image_name", "UTF-8") + "=" + URLEncoder.encode(imageName, "UTF-8") + "&" +
                             URLEncoder.encode("encoded_image", "UTF-8") + "=" + URLEncoder.encode(encodedImage, "UTF-8") + "&" +
-                            URLEncoder.encode("engineStatus", "UTF-8") + "=" + URLEncoder.encode(partName[0].replace("\"","").trim(), "UTF-8") + "&" +
+                            URLEncoder.encode("engineStatus", "UTF-8") + "=" + URLEncoder.encode(partName[0].replace("\"","").trim(), "UTF-8").replace("\"","").trim() + "&" +
                             URLEncoder.encode("starter", "UTF-8") + "=" + URLEncoder.encode(partName[1].replace("\"","").trim(), "UTF-8") + "&" +
                             URLEncoder.encode("fuelTank", "UTF-8") + "=" + URLEncoder.encode(partName[2].replace("\"","").trim(), "UTF-8") + "&" +
                             URLEncoder.encode("airFilter", "UTF-8") + "=" + URLEncoder.encode(partName[3].replace("\"","").trim(), "UTF-8") + "&" +
@@ -96,6 +101,8 @@ public class BackgroundTaskGX160 extends AsyncTask<String, Void, String> {
                             URLEncoder.encode("amount", "UTF-8") + "=" + URLEncoder.encode(amount, "UTF-8") + "&" +
                             URLEncoder.encode("dealingStatus", "UTF-8") + "=" + URLEncoder.encode(dealingStatus, "UTF-8");
 
+                    System.out.println("idxEngine ติด = "+ idxEngine);
+                    System.out.println("data = " + data);
                 } else {
                     data = URLEncoder.encode("idNo", "UTF-8") + "=" + URLEncoder.encode(idNo, "UTF-8") + "&" +
                             URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") + "&" +
@@ -135,7 +142,7 @@ public class BackgroundTaskGX160 extends AsyncTask<String, Void, String> {
                 InputStream is = httpURLConnection.getInputStream();
                 is.close();
 
-                return "Insert values GX160 success.";
+                return "Insert values G200 success.";
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {

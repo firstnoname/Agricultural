@@ -21,7 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class BuyEstimatedGX35 extends AppCompatActivity {
+public class BuyEstimatedG200 extends AppCompatActivity {
     //Instant for use camera.
     private static final int ACTION_TAKE_PHOTO_B = 1;
     private static final String JPEG_FILE_PREFIX = "IMG_";
@@ -42,7 +42,7 @@ public class BuyEstimatedGX35 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buy_estimated_gx35);
+        setContentView(R.layout.activity_buy_estimated);
 
         bindWidget();
 
@@ -61,11 +61,19 @@ public class BuyEstimatedGX35 extends AppCompatActivity {
 
         idxEngine = intent.getStringExtra("idxEngine");
 
+        System.out.println("idxEngine = " + idxEngine);
+
         getAmount = intent.getStringExtra("amount");
         edtAmount.setText(getAmount);
 
         strName = intent.getStringArrayExtra("partName");
         partName = Arrays.toString(strName);
+
+        System.out.println("part name = "+ partName);
+
+        /*Toast.makeText(this, "strName : " + strName.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "partName : " + partName, Toast.LENGTH_SHORT).show();*/
+        dealingStatus = intent.getStringExtra("dealStatus");
 
     }
 
@@ -194,6 +202,7 @@ public class BuyEstimatedGX35 extends AppCompatActivity {
         mImageView.setImageBitmap(rotateImage(bitmap, 90));
         mImageView.setVisibility(View.VISIBLE);
 
+
     }
 
     public static Bitmap rotateImage(Bitmap source, float angle) {
@@ -204,13 +213,19 @@ public class BuyEstimatedGX35 extends AppCompatActivity {
     }
 
     public void prepareUpload(View view) {
-        uploadValue();
+
+        idNo = edtIdentificationNo.getText().toString();
+        name = edtName.getText().toString();
+
+        if(mCurrentPhotoPath!= null && idNo != null && name != null) {
+            if(idNo.length() == 13)
+            uploadValue();
+        }
+
     }
 
     private void uploadValue() {
         //Get values from EditText.
-        idNo = edtIdentificationNo.getText().toString();
-        name = edtName.getText().toString();
         amount = getAmount.toString();
 
         //Get image name from image path.
@@ -220,8 +235,8 @@ public class BuyEstimatedGX35 extends AppCompatActivity {
         //Encode image to base64.
         imageEncodeToBase64();
 
-        String method = "insert_profile_gx35";
-        BackgroundTaskGX35 backgroundTask = new BackgroundTaskGX35(this);
+        String method = "insert_profile";
+        BackgroundTaskG200 backgroundTask = new BackgroundTaskG200(this);
         backgroundTask.execute(method, idNo, name, amount, imageName, encodeImage, partName, idxEngine, dealingStatus);
         finish();
     }

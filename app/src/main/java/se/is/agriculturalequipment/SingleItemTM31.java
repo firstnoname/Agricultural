@@ -4,8 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -29,7 +32,6 @@ public class SingleItemTM31 extends AppCompatActivity {
         TextView txtName = (TextView) findViewById(R.id.txtName);
         TextView txtEngine = (TextView) findViewById(R.id.txtEngine);
         TextView txtAirChamber = (TextView) findViewById(R.id.txtAirChamber);
-        TextView txtSealSet = (TextView) findViewById(R.id.txtSealSet);
         TextView txtAdjustSet = (TextView) findViewById(R.id.txtAdjustSet);
         TextView txtDischargeMetal = (TextView) findViewById(R.id.txtDischargeMetal);
         TextView txtSuctionMetal = (TextView) findViewById(R.id.txtSuctionMetal);
@@ -38,10 +40,10 @@ public class SingleItemTM31 extends AppCompatActivity {
         TextView txtPressureGauge = (TextView) findViewById(R.id.txtPressureGauge);
         TextView txtBallValveSwitch = (TextView) findViewById(R.id.txtBallValveSwitch);
         TextView txtOilFilter = (TextView) findViewById(R.id.txtOilFilter);
-        TextView txtOilTankCap = (TextView) findViewById(R.id.txtOilTankCap);
         TextView txtDealStatus = (TextView) findViewById(R.id.txtDealStatus);
         TextView txtBuyDate = (TextView) findViewById(R.id.txtBuyDate);
         TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+        ImageView imageView4 = (ImageView) findViewById(R.id.imageView4);
 
         btnChangeStatus = (Button) findViewById(R.id.btnChangeStatus);
 
@@ -49,7 +51,6 @@ public class SingleItemTM31 extends AppCompatActivity {
         txtName.setText(tm31.getName());
         txtEngine.setText(tm31.getEngineStatus());
         txtAirChamber.setText(tm31.getAirChamber());
-        txtSealSet.setText(tm31.getSealSet());
         txtAdjustSet.setText(tm31.getAdjustSet());
         txtDischargeMetal.setText(tm31.getDischargeMetal());
         txtSuctionMetal.setText(tm31.getSuctionMetal());
@@ -58,10 +59,12 @@ public class SingleItemTM31 extends AppCompatActivity {
         txtPressureGauge.setText(tm31.getPressureGauge());
         txtBallValveSwitch.setText(tm31.getBallValveSwitch());
         txtOilFilter.setText(tm31.getOilFilter());
-        txtOilTankCap.setText(tm31.getOilTankCap());
         txtDealStatus.setText(tm31.getDealStatus());
         txtBuyDate.setText(tm31.getBuyDate());
         txtAmount.setText(tm31.getAmount());
+
+        Picasso.with(imageView4.getContext()).load("http://tomori.siameki.com/images/"+tm31.getImage_name()).rotate(90).into(imageView4);
+
         id_who_buy = tm31.getId_buy_tm31();
         if(tm31.getDealStatus().contains("Buy")){
             btnChangeStatus.setVisibility(View.INVISIBLE);

@@ -14,11 +14,11 @@ public class TableGX160 {
     public static final String COLUMN_GX160_ID = "_id";
     public static final String COLUMN_PART_NAME = "partNameGX160";
     public static final String COLUMN_PART_PRICE = "partPriceGX160";
-    private MyOpenHelper objMyOpenHelper;
+    private DbOpenHelper objMyOpenHelper;
     private SQLiteDatabase readSqLiteDatabase, writeSqLiteDatabase;
 
     public TableGX160(Context context) {
-        objMyOpenHelper = new MyOpenHelper(context);
+        objMyOpenHelper = new DbOpenHelper(context);
         writeSqLiteDatabase = objMyOpenHelper.getWritableDatabase();
         readSqLiteDatabase = objMyOpenHelper.getReadableDatabase();
     }//End of constructor.

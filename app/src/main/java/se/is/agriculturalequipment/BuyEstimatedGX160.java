@@ -3,6 +3,7 @@ package se.is.agriculturalequipment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -26,7 +27,7 @@ public class BuyEstimatedGX160 extends AppCompatActivity {
     private static final String JPEG_FILE_PREFIX = "IMG_";
     private static final String JPEG_FILE_SUFFIX = ".jpg";
     String idxEngine;
-    String dealingStatus = "";
+    String dealingStatus = "Buy";
     private String mCurrentPhotoPath;
     private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
     private ImageView mImageView;
@@ -66,7 +67,6 @@ public class BuyEstimatedGX160 extends AppCompatActivity {
         strName = intent.getStringArrayExtra("partName");
         partName = Arrays.toString(strName);
 
-        dealingStatus = intent.getStringExtra("dealStatus");
     }
 
     private void bindWidget() {
@@ -191,19 +191,32 @@ public class BuyEstimatedGX160 extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
 
         //Associate the Bitmap to the ImageView.
-        mImageView.setImageBitmap(bitmap);
+        mImageView.setImageBitmap(rotateImage(bitmap, 90));
         mImageView.setVisibility(View.VISIBLE);
 
     }
 
+    public static Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
+                matrix, true);
+    }
+
     public void prepareUpload(View view) {
-        uploadValue();
+
+        idNo = edtIdentificationNo.getText().toString();
+        name = edtName.getText().toString();
+
+        if(mCurrentPhotoPath!= null && idNo != null && name != null) {
+            if(idNo.length() == 13)
+                uploadValue();
+        }
+
     }
 
     private void uploadValue() {
         //Get values from EditText.
-        idNo = edtIdentificationNo.getText().toString();
-        name = edtName.getText().toString();
         amount = getAmount.toString();
 
         //Get image name from image path.

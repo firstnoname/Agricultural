@@ -1,6 +1,8 @@
 package se.is.agriculturalequipment;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.UserManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -93,9 +95,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intentMenuEstimate);
     }
 
+
     public void intentMenuSetting(View view){
+
         Intent intentMenuSetting = new Intent(this, MenuSetting.class);
         startActivity(intentMenuSetting);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void intentLogout(View view) {
+        finishAndRemoveTask();
     }
 
     public void intentAdmin(View view) {

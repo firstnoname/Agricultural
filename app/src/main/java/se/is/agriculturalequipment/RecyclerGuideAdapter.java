@@ -31,7 +31,7 @@ class RecyclerGuideAdapter extends RecyclerView.Adapter<RecyclerGuideAdapter.Vie
     };
 
     private int[] guideImageG200L = {
-//            0,
+          //  0,
             R.drawable.g200_starter_change,
             R.drawable.g200_fueltank_change,
             R.drawable.g200_airfilter_change,
@@ -48,7 +48,7 @@ class RecyclerGuideAdapter extends RecyclerView.Adapter<RecyclerGuideAdapter.Vie
     };
 
     private int[] guideImageG200R = {
-//            0,
+           // 0,
             R.drawable.g200_starter_not,
             R.drawable.g200_fueltank_not,
             R.drawable.g200_airfilter_not,

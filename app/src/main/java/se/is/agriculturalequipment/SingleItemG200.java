@@ -1,28 +1,17 @@
 package se.is.agriculturalequipment;
 
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.squareup.picasso.Picasso;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import se.is.agriculturalequipment.DAO.ChangeStatusDAOServer;
-import se.is.agriculturalequipment.history.HistoryG200Lists;
 import se.is.agriculturalequipment.model.G200;
 
 public class SingleItemG200 extends AppCompatActivity {
@@ -38,8 +27,6 @@ public class SingleItemG200 extends AppCompatActivity {
         final G200 edtG200 = (G200) getIntent().getSerializableExtra("editG200");
         final String table_name = getIntent().getStringExtra("table_name");
         final String id_who_buy;
-
-        //Toast.makeText(this, edtG200.getStarter() + " : " + edtG200.getFuelTank(), Toast.LENGTH_SHORT).show();
 
         TextView txtID = (TextView) findViewById(R.id.txtIdCustomer);
         TextView txtName = (TextView) findViewById(R.id.txtName);
@@ -60,6 +47,7 @@ public class SingleItemG200 extends AppCompatActivity {
         TextView txtDealStatus = (TextView) findViewById(R.id.txtDealStatus);
         TextView txtBuyDate = (TextView) findViewById(R.id.txtBuyDate);
         TextView txtAmount = (TextView) findViewById(R.id.txtAmount);
+        ImageView imageView3 = (ImageView) findViewById(R.id.imageView3);
 
         btnChangeStatus = (Button) findViewById(R.id.btnChangeStatus);
 
@@ -83,7 +71,13 @@ public class SingleItemG200 extends AppCompatActivity {
         txtBuyDate.setText(edtG200.getBuyDate());
         txtAmount.setText(edtG200.getAmount());
         id_who_buy = edtG200.getId_buy_g200();
-        //Log.d("single item g200 : ", edtG200.getEngineStatus() + " : " + edtG200.getStarter());
+
+        Log.d("image name = " , edtG200.getImage_name());
+
+        System.out.println("image name = "+ edtG200.getImage_name());
+
+        Picasso.with(imageView3.getContext()).load("http://tomori.siameki.com/images/"+edtG200.getImage_name()).rotate(90).into(imageView3);
+
         //Change status from Save to Buy.
 
         if(edtG200.getDealStatus().contains("Buy")){
@@ -101,36 +95,6 @@ public class SingleItemG200 extends AppCompatActivity {
 
                 Toast.makeText(SingleItemG200.this, "เปลี่ยนสถานะการซื้อสำเร็จ." + id_who_buy + " : " + table_name, Toast.LENGTH_SHORT).show();
                 finish();
-                //Toast.makeText(SingleItemG200.this, id_who_buy, Toast.LENGTH_SHORT).show();
-                /*RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url_update_dealStatus = "http://tomori.siameki.com/update_dealStatus.php";
-
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url_update_dealStatus,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                Toast.makeText(SingleItemG200.this, response, Toast.LENGTH_SHORT).show();
-                                Intent intentHistoryG200 = new Intent(SingleItemG200.this, HistoryG200Lists.class);
-                                startActivity(intentHistoryG200);
-                                finish();
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(SingleItemG200.this, "Update deal status error! " + error, Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError{
-                        Map<String, String> params = new HashMap<>();
-                        params.put("id_who_buy", id_who_buy);
-                        params.put("table_name", table_name);
-                        return params;
-                    }
-                };
-
-                queue.add(stringRequest);*/
             }
         });
     }

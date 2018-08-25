@@ -15,11 +15,11 @@ public class TableG200 {
     public static final String COLUMN_G200_ID = "_id";
     public static final String COLUMN_PART_NAME = "partNameG200";
     public static final String COLUMN_PART_PRICE = "partPriceG200";
-    private MyOpenHelper objMyOpenHelper;
+    private DbOpenHelper objMyOpenHelper;
     private SQLiteDatabase readSqLiteDatabase, writeSqLiteDatabase;
 
     public TableG200(Context context) {
-        objMyOpenHelper = new MyOpenHelper(context);
+        objMyOpenHelper = new DbOpenHelper(context);
         writeSqLiteDatabase = objMyOpenHelper.getWritableDatabase();
         readSqLiteDatabase = objMyOpenHelper.getReadableDatabase();
 

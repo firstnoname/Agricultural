@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class SubmitEstimateTM31 extends AppCompatActivity {
 
     private int idxEngine;
+    private String idxEnginePass;
     private String priceAirChamber, priceSealSet, priceAdjustSet, priceDischargeMetal, priceSuctionMetal,
             pricePistonSet, priceStarterRopeReel, pricePressureGauge, priceBallValveSwitch, priceOilFilter,
             priceNewPaint, priceOilTankCap;
@@ -21,6 +22,7 @@ public class SubmitEstimateTM31 extends AppCompatActivity {
     private TextView txtAmount;
     private ListView listViewEstimatedTM31;
     private String[] strName, strPrice;
+    private String preEstimatedPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class SubmitEstimateTM31 extends AppCompatActivity {
 
         if (idxEngine == 0) {
             strPrice = new String[]{
+                    String.valueOf(Double.parseDouble(preEstimatedPrice)*0.5),
                     dAirChamber.toString(),
                     dSealSet.toString(),
 //                    dAdjustSet.toString(),
@@ -115,8 +118,8 @@ public class SubmitEstimateTM31 extends AppCompatActivity {
             dOilTankCap = Double.parseDouble(priceOilTankCap);*/
 
             //Estimate price.
-            dAmount = dAirChamber + dSealSet + dDischargeMetal + dSuctionMetal +
-                    dPistonSet + dStarterRopeReel + dPressureGauge + dBallValveSwitch + dOilFilter;
+            dAmount = Double.parseDouble(preEstimatedPrice)*0.5 - (dAirChamber + dSealSet + dDischargeMetal + dSuctionMetal +
+                    dPistonSet + dStarterRopeReel + dPressureGauge + dBallValveSwitch + dOilFilter);
 
         } else {
            /* dAirChamber = Double.parseDouble(priceAirChamber);
@@ -156,16 +159,17 @@ public class SubmitEstimateTM31 extends AppCompatActivity {
         TableTM31 objTableTM31 = new TableTM31(this);
         String[] strPartPrice = objTableTM31.readPartPrice();
 
+        this.preEstimatedPrice = strPartPrice[0];
         //Compare data from SQLite.
         if (idxEngine == 0) {
             if (idSelectedList.get(0) == 1) {
-                priceAirChamber = strPartPrice[0];
+                priceAirChamber = strPartPrice[1];
             } else {
                 priceAirChamber = "0.0";
             }
 
             if (idSelectedList.get(1) == 1) {
-                priceSealSet = strPartPrice[1];
+                priceSealSet = strPartPrice[2];
             } else {
                 priceSealSet = "0.0";
             }
@@ -337,24 +341,30 @@ public class SubmitEstimateTM31 extends AppCompatActivity {
     }
 
     public void intentSaveTM31(View view) {
-        Intent intentSaveTM31 = new Intent(this, BuyEstimatedTM31.class);
+        if (idxEngine == 0) {
+            idxEnginePass = "0";
+        } else {
+            idxEnginePass = "1";
+        }
+        Intent intentSaveTM31 = new Intent((this), BuyEstimatedTM31.class);
         intentSaveTM31.putExtra("amount", dAmount.toString());
         intentSaveTM31.putExtra("partName", strName);
         intentSaveTM31.putExtra("partPrice", strPrice);
-        intentSaveTM31.putExtra("dealStatus", "Save");
-        intentSaveTM31.putExtra("idxEngine", "0");
-
+        intentSaveTM31.putExtra("idxEngine", idxEnginePass);
         startActivity(intentSaveTM31);
     }
 
     public void intentBuyTM31(View view) {
+        if (idxEngine == 0) {
+            idxEnginePass = "0";
+        } else {
+            idxEnginePass = "1";
+        }
         Intent intentBuyTM31 = new Intent(this, BuyEstimatedTM31.class);
         intentBuyTM31.putExtra("amount", dAmount.toString());
         intentBuyTM31.putExtra("partName", strName);
         intentBuyTM31.putExtra("partPrice", strPrice);
-        intentBuyTM31.putExtra("dealStatus", "Buy");
-        intentBuyTM31.putExtra("idxEngine", "0");
-
+        intentBuyTM31.putExtra("idxEngine", idxEnginePass);
         startActivity(intentBuyTM31);
     }
 
